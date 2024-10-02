@@ -1,4 +1,4 @@
-# This file adds members to the Members table in MYSQL 
+# This file adds members to the Members table in MYSQL to satisfy task 1
 from connect_mysql.py import connect_database
 
 conn = connect_database()

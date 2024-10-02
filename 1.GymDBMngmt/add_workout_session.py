@@ -1,4 +1,4 @@
-# This file adds a workout session to the Workout Sessions table 
+# This file adds a workout session to the Workout Sessions table to satisfy Task 2
 from connect_mysql.py import connect_database
 
 conn = connect_database()
@@ -12,7 +12,7 @@ if conn:
             cursor.execute("SELECT id FROM Members WHERE id = %s", (member_id,))
             member = cursor.fetchone()
             if not member:
-                print(f"Cannot add workout session because {member_id} is not registered.\nPlease register them first.")
+                print(f"Cannot add workout session because member ID {member_id} is not registered.\nPlease register them first.")
                 return
 
             #  this is the query to add a workout session to a registered member broken up in 2 lines for better readability
