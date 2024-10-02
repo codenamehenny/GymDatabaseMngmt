@@ -4,10 +4,10 @@ from mysql.connector import Error
 
 conn = connect_database()
 if conn:
-    def add_workout_session(member_id, date, duration_minutes, calories_burned):
+    def add_workout_session(date, duration_minutes, calories_burned, member_id):
         try:
             cursor = conn.cursor()
-            workout_info = (member_id, date, duration_minutes, calories_burned)
+            workout_info = (date, duration_minutes, calories_burned, member_id)
 
             # this will make sure the member is registered before adding the workout session
             cursor.execute("SELECT id FROM Members WHERE id = %s", (member_id,))
@@ -18,7 +18,7 @@ if conn:
 
             #  this is the query to add a workout session to a registered member broken up in 2 lines for better readability
             query = """
-            INSERT INTO WorkoutSessions (member_id, date, duration_minutes, calories_burned)        
+            INSERT INTO WorkoutSessions (date, duration_minutes, calories_burned, member_id)        
             VALUES (%s, %s, %s, %s)
             """
             # executing the query and committing changes
