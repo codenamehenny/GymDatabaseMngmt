@@ -25,3 +25,5 @@ if conn:
             if conn and conn.is_connected():
                 cursor.close()
                 conn.close()
+else:
+    print("Connection to MYSQL failed")
