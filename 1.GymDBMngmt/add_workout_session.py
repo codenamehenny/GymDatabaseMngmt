@@ -1,5 +1,6 @@
 # This file adds a workout session to the Workout Sessions table to satisfy Task 2
 from connect_mysql.py import connect_database
+from mysql.connector import Error
 
 conn = connect_database()
 if conn:
@@ -24,7 +25,7 @@ if conn:
             cursor.execute(query, workout_info)
             conn.commit()
             print(f"Workout session for member id {member_id} added successfully.")
-        except Exception as e:
+        except Error as e:
             print(f"Error message: {e}. Workout session not recorded for {member_id}")
         finally:
             if conn and conn.is_connected():

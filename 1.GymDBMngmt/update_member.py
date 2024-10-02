@@ -1,5 +1,6 @@
 # this file updates the member's age to satisfy task 3
 from connect_mysql.py import connect_database
+from mysql.connector import Error
 
 conn = connect_database()
 if conn:

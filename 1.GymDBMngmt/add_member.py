@@ -1,9 +1,10 @@
 # This file adds members to the Members table in MYSQL to satisfy task 1
 from connect_mysql.py import connect_database
+from mysql.connector import Error
 
 conn = connect_database()
 if conn:
-    add_member(id, name, age):
+    def add_member(id, name, age):
         try:
             # our "librarian" grabbing and inserting info to the "library"
             cursor = conn.curser() 
@@ -18,7 +19,7 @@ if conn:
             cursor.execute(query, new_member)
             conn.commit()
             print(f"'{name}' added to the Members table successfully")
-        except Exception as e:
+        except Error as e:
             print(f"Error Message: '{e}'. {name} has not been added successfully.")
         finally:
             # closing the cursor and connection to mysql
